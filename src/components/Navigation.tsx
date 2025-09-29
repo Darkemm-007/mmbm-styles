@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ShoppingBag, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import logo from "@/assets/logo.png";
 
 interface NavigationProps {
   cartCount?: number;
@@ -22,9 +23,12 @@ const Navigation = ({ cartCount = 0 }: NavigationProps) => {
       <div className="container mx-auto px-4">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex flex-col items-start">
-            <h1 className="text-2xl font-bold tracking-tight text-primary">MMBM STYLE</h1>
-            <p className="text-xs text-muted-foreground">COME LET'S STYLE YOU UP</p>
+          <Link to="/" className="flex items-center gap-3">
+            <img src={logo} alt="MMBM Logo" className="h-12 w-12 object-contain" />
+            <div className="flex flex-col items-start">
+              <h1 className="text-xl font-bold tracking-tight text-primary">MMBM STYLE</h1>
+              <p className="text-xs text-muted-foreground hidden sm:block">COME LET'S STYLE YOU UP</p>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
