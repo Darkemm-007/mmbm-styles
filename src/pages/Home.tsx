@@ -184,6 +184,11 @@ const Home = () => {
                 <li>📞 0503561270</li>
                 <li>📧 Clothingmmbm@gmail.com</li>
               </ul>
+              <p>we deliver to👌🏽</p>
+              <ul>
+                <li>📍Accra
+                <li>📍Kumasi
+              </ul>
             </div>
           </div>
           
