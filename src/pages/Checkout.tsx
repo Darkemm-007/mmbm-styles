@@ -9,10 +9,14 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import logo from "@/assets/logo.png";
+import { CheckCircle } from "lucide-react";
 
 const Checkout = () => {
   const { cart, cartCount, cartTotal, clearCart } = useCart();
   const navigate = useNavigate();
+  const [orderConfirmed, setOrderConfirmed] = useState(false);
+  const [orderId, setOrderId] = useState("");
   
   const [formData, setFormData] = useState({
     name: "",
@@ -28,31 +32,147 @@ const Checkout = () => {
     e.preventDefault();
     
     // Generate order ID
-    const orderId = `MMBM-${Date.now().toString(36).toUpperCase()}`;
+    const newOrderId = `MMBM-${Date.now().toString(36).toUpperCase()}`;
+    setOrderId(newOrderId);
     
     // Here you would typically send this data to your backend
     console.log("Order placed:", {
-      orderId,
+      orderId: newOrderId,
       ...formData,
       items: cart,
       total: cartTotal,
     });
     
-    // Clear cart and show success
+    // Show confirmation screen
+    setOrderConfirmed(true);
+    toast.success("Reservation confirmed!");
+  };
+
+  const handleNewOrder = () => {
     clearCart();
-    toast.success("Reservation confirmed! We'll contact you shortly.", {
-      description: `Your order ID is ${orderId}`,
-    });
-    
-    // Navigate to home
-    setTimeout(() => {
-      navigate("/");
-    }, 2000);
+    navigate("/catalog");
   };
 
   if (cart.length === 0) {
     navigate("/cart");
     return null;
+  }
+
+  // Order Confirmation Receipt
+  if (orderConfirmed) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation cartCount={cartCount} />
+        
+        <div className="container mx-auto px-4 py-8 max-w-2xl">
+          <Card className="border-2">
+            <CardContent className="p-8">
+              {/* Logo Header */}
+              <div className="flex flex-col items-center mb-6 pb-6 border-b">
+                <img src={logo} alt="MMBM Logo" className="h-24 w-24 mb-4" />
+                <h1 className="text-2xl font-bold text-primary">MMBM STYLE</h1>
+                <p className="text-sm text-muted-foreground">COME LET'S STYLE YOU UP</p>
+              </div>
+
+              {/* Success Message */}
+              <div className="flex flex-col items-center mb-6 pb-6 border-b">
+                <CheckCircle className="h-16 w-16 text-green-600 mb-3" />
+                <h2 className="text-2xl font-bold mb-2">Reservation Confirmed!</h2>
+                <p className="text-center text-muted-foreground">
+                  Thank you for your reservation. We'll contact you shortly to confirm.
+                </p>
+              </div>
+
+              {/* Order Details */}
+              <div className="mb-6 pb-6 border-b">
+                <div className="bg-secondary/30 p-4 rounded-lg mb-4">
+                  <p className="text-sm text-muted-foreground mb-1">Order ID</p>
+                  <p className="text-xl font-bold text-primary">{orderId}</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <p className="text-muted-foreground">Name</p>
+                    <p className="font-semibold">{formData.name}</p>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground">Phone</p>
+                    <p className="font-semibold">{formData.phone}</p>
+                  </div>
+                  {formData.email && (
+                    <div className="col-span-2">
+                      <p className="text-muted-foreground">Email</p>
+                      <p className="font-semibold">{formData.email}</p>
+                    </div>
+                  )}
+                  <div>
+                    <p className="text-muted-foreground">Delivery Method</p>
+                    <p className="font-semibold capitalize">{formData.deliveryMethod}</p>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground">Payment Method</p>
+                    <p className="font-semibold">{formData.paymentMethod === "cash" ? "Cash" : "Mobile Money"}</p>
+                  </div>
+                  {formData.address && (
+                    <div className="col-span-2">
+                      <p className="text-muted-foreground">Address</p>
+                      <p className="font-semibold">{formData.address}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Items */}
+              <div className="mb-6 pb-6 border-b">
+                <h3 className="font-bold mb-4">Reserved Items</h3>
+                <div className="space-y-3">
+                  {cart.map((item) => (
+                    <div key={item.id} className="flex justify-between text-sm">
+                      <div className="flex-1">
+                        <p className="font-semibold">{item.name}</p>
+                        <p className="text-muted-foreground">Qty: {item.quantity}</p>
+                      </div>
+                      <p className="font-bold">GH₵ {(item.price * item.quantity).toFixed(2)}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Total */}
+              <div className="mb-6">
+                <div className="flex justify-between text-xl font-bold">
+                  <span>Total Amount</span>
+                  <span className="text-primary">GH₵ {cartTotal.toFixed(2)}</span>
+                </div>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Payment due on {formData.deliveryMethod === "pickup" ? "pickup" : "delivery"}
+                </p>
+              </div>
+
+              {/* Contact Info */}
+              <div className="bg-secondary/30 p-4 rounded-lg mb-6">
+                <p className="font-semibold mb-2">Contact Us</p>
+                <p className="text-sm">📞 0503561270</p>
+                <p className="text-sm">📧 Clothingmmbm@gmail.com</p>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Reservation valid for 24-48 hours
+                </p>
+              </div>
+
+              {/* Actions */}
+              <div className="flex gap-3">
+                <Button onClick={() => window.print()} variant="outline" className="flex-1">
+                  Print Receipt
+                </Button>
+                <Button onClick={handleNewOrder} variant="hero" className="flex-1">
+                  Continue Shopping
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
   }
 
   return (

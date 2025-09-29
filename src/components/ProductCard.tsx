@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -27,6 +28,12 @@ const ProductCard = ({ product, onReserve }: ProductCardProps) => {
           src={product.image}
           alt={product.name}
           className="object-cover w-full h-full transition-smooth group-hover:scale-105"
+        />
+        {/* Logo Watermark */}
+        <img 
+          src={logo} 
+          alt="MMBM Watermark" 
+          className="absolute bottom-4 right-4 w-16 h-16 opacity-30 pointer-events-none"
         />
         <div className="absolute top-2 left-2 flex gap-2">
           {product.isNew && (
