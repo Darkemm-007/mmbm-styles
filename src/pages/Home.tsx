@@ -184,10 +184,10 @@ const Home = () => {
                 <li>📞 0503561270</li>
                 <li>📧 Clothingmmbm@gmail.com</li>
               </ul>
-              <p>we deliver to👌🏽</p>
-              <ul>
-                <li>📍Accra
-                <li>📍Kumasi
+              <p className="text-sm opacity-90">we deliver to👌🏽</p>
+              <ul className="space-y-2 text-sm opacity-90">
+                <li>📍Accra</li>
+                <li>📍Kumasi</li>
               </ul>
             </div>
           </div>
