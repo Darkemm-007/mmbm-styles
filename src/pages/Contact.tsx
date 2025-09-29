@@ -76,26 +76,7 @@ const Contact = () => {
               </CardContent>
             </Card>
           </div>
-           <Card className="hover:shadow-lg transition-smooth">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-full bg-primary/10">
-                    <Mail className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Location</h3>
-                    <a
-                      href="loc:Location"
-                      className="text-muted-foreground hover:text-primary transition-colors break-all"
-                    >
-                      Accra
-                      Kumasi
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+         
           {/* Contact Form */}
           <Card>
             <CardHeader>
