@@ -181,7 +181,7 @@ const Home = () => {
             <div>
               <h4 className="font-semibold mb-4">Contact Us</h4>
               <ul className="space-y-2 text-sm opacity-90">
-                <li>📞 0503561270</li>
+                <li>📞 0509613436</li>
                 <li>📧 Clothingmmbm@gmail.com</li>
               </ul>
               <p className="text-sm opacity-90">we deliver to👌🏽</p>
