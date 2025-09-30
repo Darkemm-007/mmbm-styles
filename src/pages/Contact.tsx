@@ -47,10 +47,10 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Phone</h3>
                     <a
-                      href="tel:0503561270"
+                      href="tel:0509613436"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      0503561270
+                      0509613436
                     </a>
                   </div>
                 </div>
