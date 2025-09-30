@@ -152,8 +152,8 @@ const Checkout = () => {
               {/* Contact Info */}
               <div className="bg-secondary/30 p-4 rounded-lg mb-6">
                 <p className="font-semibold mb-2">Contact Us</p>
-                <p className="text-sm">📞 0503561270</p>
-                <p className="text-sm">📧 Clothingmmbm@gmail.com</p>
+                <p className="text-sm">📞 0509613436</p>
+                <p className="text-sm">📧 mjdark2007@gmail.com</p>
                 <p className="text-xs text-muted-foreground mt-2">
                   Reservation valid for 24-48 hours
                 </p>
@@ -207,7 +207,7 @@ const Checkout = () => {
                       id="phone"
                       type="tel"
                       required
-                      placeholder="0503561270"
+                      placeholder="0509613436"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />

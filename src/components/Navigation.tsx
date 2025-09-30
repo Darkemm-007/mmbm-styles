@@ -46,9 +46,9 @@ const Navigation = ({ cartCount = 0 }: NavigationProps) => {
 
           {/* Right Actions */}
           <div className="flex items-center space-x-4">
-            <a href="tel:0503561270" className="hidden md:flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-smooth">
+            <a href="tel:0509613436" className="hidden md:flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-smooth">
               <Phone className="h-4 w-4" />
-              <span>0503561270</span>
+              <span>0509613436</span>
             </a>
             
             <Link to="/cart" className="relative">
