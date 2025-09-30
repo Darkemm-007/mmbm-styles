@@ -27,7 +27,7 @@ const Contact = () => {
       `*Message:*\n${formData.message}`;
     
     // Send to WhatsApp
-    const whatsappUrl = `https://wa.me/233509613436?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/233503561270?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     
     setFormData({ name: "", email: "", message: "" });
@@ -57,10 +57,10 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Phone</h3>
                     <a
-                      href="tel:0509613436"
+                      href="tel:0503561270"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      0509613436
+                      0503561270
                     </a>
                   </div>
                 </div>
@@ -76,10 +76,10 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Email</h3>
                     <a
-                      href="mailto:mjdark2007@gmail.com"
+                      href="mailto:Clothingmmbm@gmail.com"
                       className="text-muted-foreground hover:text-primary transition-colors break-all"
                     >
-                      mjdark2007@gmail.com
+                      Clothingmmbm@gmail.com
                     </a>
                   </div>
                 </div>
