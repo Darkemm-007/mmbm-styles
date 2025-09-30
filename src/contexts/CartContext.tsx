@@ -4,11 +4,13 @@ import { toast } from "sonner";
 
 interface CartItem extends Product {
   quantity: number;
+  selectedSize?: string;
+  selectedColor?: string;
 }
 
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (product: Product) => void;
+  addToCart: (product: Product, selectedSize?: string, selectedColor?: string) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
@@ -16,26 +18,35 @@ interface CartContextType {
   cartTotal: number;
 }
 
+export type { CartItem };
+
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
-  const addToCart = (product: Product) => {
+  const addToCart = (product: Product, selectedSize?: string, selectedColor?: string) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === product.id);
+      const existingItem = prevCart.find(
+        (item) => 
+          item.id === product.id && 
+          item.selectedSize === selectedSize && 
+          item.selectedColor === selectedColor
+      );
       
       if (existingItem) {
         toast.success("Updated quantity in cart");
         return prevCart.map((item) =>
-          item.id === product.id
+          item.id === product.id && 
+          item.selectedSize === selectedSize && 
+          item.selectedColor === selectedColor
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
       
       toast.success("Added to cart");
-      return [...prevCart, { ...product, quantity: 1 }];
+      return [...prevCart, { ...product, quantity: 1, selectedSize, selectedColor }];
     });
   };
 

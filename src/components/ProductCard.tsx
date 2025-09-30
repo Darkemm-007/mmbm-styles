@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import ProductSelectionDialog from "./ProductSelectionDialog";
 
 export interface Product {
   id: string;
@@ -17,11 +19,31 @@ export interface Product {
 
 interface ProductCardProps {
   product: Product;
-  onReserve: (product: Product) => void;
+  onReserve: (product: Product, selectedSize?: string, selectedColor?: string) => void;
 }
 
 const ProductCard = ({ product, onReserve }: ProductCardProps) => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleReserveClick = () => {
+    const hasSizes = product.sizes && product.sizes.length > 0;
+    const hasColors = product.colors && product.colors.length > 0;
+
+    if (hasSizes || hasColors) {
+      setDialogOpen(true);
+    } else {
+      onReserve(product);
+    }
+  };
+
   return (
+    <>
+      <ProductSelectionDialog
+        product={product}
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        onConfirm={onReserve}
+      />
     <Card className="group overflow-hidden transition-smooth hover:shadow-lg">
       <div className="relative overflow-hidden aspect-[3/4]">
         <img
@@ -71,12 +93,13 @@ const ProductCard = ({ product, onReserve }: ProductCardProps) => {
         <Button 
           className="w-full" 
           variant="hero"
-          onClick={() => onReserve(product)}
+          onClick={handleReserveClick}
         >
           Reserve Now
         </Button>
       </CardFooter>
     </Card>
+    </>
   );
 };
 

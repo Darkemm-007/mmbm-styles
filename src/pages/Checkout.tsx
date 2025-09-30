@@ -35,17 +35,36 @@ const Checkout = () => {
     const newOrderId = `MMBM-${Date.now().toString(36).toUpperCase()}`;
     setOrderId(newOrderId);
     
-    // Here you would typically send this data to your backend
-    console.log("Order placed:", {
-      orderId: newOrderId,
-      ...formData,
-      items: cart,
-      total: cartTotal,
-    });
+    // Format items for WhatsApp message
+    const itemsList = cart.map((item) => {
+      let itemText = `• ${item.name} (Qty: ${item.quantity})`;
+      if (item.selectedSize || item.selectedColor) {
+        itemText += ` - ${[item.selectedSize, item.selectedColor].filter(Boolean).join(', ')}`;
+      }
+      itemText += ` - GH₵ ${(item.price * item.quantity).toFixed(2)}`;
+      return itemText;
+    }).join('\n');
+    
+    // Create WhatsApp message
+    const message = `*New Reservation - ${newOrderId}*\n\n` +
+      `*Customer Details:*\n` +
+      `Name: ${formData.name}\n` +
+      `Phone: ${formData.phone}\n` +
+      (formData.email ? `Email: ${formData.email}\n` : '') +
+      `\n*Order Details:*\n${itemsList}\n\n` +
+      `*Total: GH₵ ${cartTotal.toFixed(2)}*\n\n` +
+      `*Delivery:* ${formData.deliveryMethod === 'pickup' ? 'Pickup' : 'Delivery'}\n` +
+      (formData.address ? `Address: ${formData.address}\n` : '') +
+      `*Payment:* ${formData.paymentMethod === 'cash' ? 'Cash' : 'Mobile Money'}\n` +
+      (formData.notes ? `\nNotes: ${formData.notes}` : '');
+    
+    // Send to WhatsApp
+    const whatsappUrl = `https://wa.me/233509613436?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
     
     // Show confirmation screen
     setOrderConfirmed(true);
-    toast.success("Reservation confirmed!");
+    toast.success("Opening WhatsApp to confirm reservation!");
   };
 
   const handleNewOrder = () => {
@@ -127,10 +146,15 @@ const Checkout = () => {
                 <h3 className="font-bold mb-4">Reserved Items</h3>
                 <div className="space-y-3">
                   {cart.map((item) => (
-                    <div key={item.id} className="flex justify-between text-sm">
+                    <div key={`${item.id}-${item.selectedSize}-${item.selectedColor}`} className="flex justify-between text-sm">
                       <div className="flex-1">
                         <p className="font-semibold">{item.name}</p>
                         <p className="text-muted-foreground">Qty: {item.quantity}</p>
+                        {(item.selectedSize || item.selectedColor) && (
+                          <p className="text-xs text-muted-foreground">
+                            {[item.selectedSize, item.selectedColor].filter(Boolean).join(' • ')}
+                          </p>
+                        )}
                       </div>
                       <p className="font-bold">GH₵ {(item.price * item.quantity).toFixed(2)}</p>
                     </div>
@@ -317,7 +341,7 @@ const Checkout = () => {
               <CardContent>
                 <div className="space-y-4 mb-6">
                   {cart.map((item) => (
-                    <div key={item.id} className="flex gap-3">
+                    <div key={`${item.id}-${item.selectedSize}-${item.selectedColor}`} className="flex gap-3">
                       <img
                         src={item.image}
                         alt={item.name}
@@ -326,6 +350,11 @@ const Checkout = () => {
                       <div className="flex-1">
                         <p className="font-semibold text-sm">{item.name}</p>
                         <p className="text-xs text-muted-foreground">Qty: {item.quantity}</p>
+                        {(item.selectedSize || item.selectedColor) && (
+                          <p className="text-xs text-muted-foreground">
+                            {[item.selectedSize, item.selectedColor].filter(Boolean).join(' • ')}
+                          </p>
+                        )}
                         <p className="text-sm font-bold text-primary">
                           GH₵ {(item.price * item.quantity).toFixed(2)}
                         </p>

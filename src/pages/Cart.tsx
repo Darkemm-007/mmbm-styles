@@ -42,7 +42,7 @@ const Cart = () => {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {cart.map((item) => (
-              <Card key={item.id}>
+              <Card key={`${item.id}-${item.selectedSize}-${item.selectedColor}`}>
                 <CardContent className="p-4">
                   <div className="flex gap-4">
                     <img
@@ -56,6 +56,13 @@ const Cart = () => {
                       <p className="text-sm text-muted-foreground mb-2">
                         {item.category}
                       </p>
+                      {(item.selectedSize || item.selectedColor) && (
+                        <p className="text-xs text-muted-foreground mb-2">
+                          {item.selectedSize && `Size: ${item.selectedSize}`}
+                          {item.selectedSize && item.selectedColor && " • "}
+                          {item.selectedColor && `Color: ${item.selectedColor}`}
+                        </p>
+                      )}
                       <p className="text-lg font-bold text-primary">
                         GH₵ {item.price.toFixed(2)}
                       </p>
