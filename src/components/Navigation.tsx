@@ -39,6 +39,15 @@ const Navigation = ({ cartCount = 0 }: NavigationProps) => {
             <Link to="/catalog" className={navLinkClass("/catalog")}>
               Shop
             </Link>
+            <Link to="/clothing" className={navLinkClass("/clothing")}>
+              Clothing
+            </Link>
+            <Link to="/shoes" className={navLinkClass("/shoes")}>
+              Shoes
+            </Link>
+            <Link to="/accessories" className={navLinkClass("/accessories")}>
+              Accessories
+            </Link>
             <Link to="/contact" className={navLinkClass("/contact")}>
               Contact
             </Link>
@@ -71,6 +80,15 @@ const Navigation = ({ cartCount = 0 }: NavigationProps) => {
           </Link>
           <Link to="/catalog" className={navLinkClass("/catalog")}>
             Shop
+          </Link>
+          <Link to="/clothing" className={navLinkClass("/clothing")}>
+            Clothing
+          </Link>
+          <Link to="/shoes" className={navLinkClass("/shoes")}>
+            Shoes
+          </Link>
+          <Link to="/accessories" className={navLinkClass("/accessories")}>
+            Accessories
           </Link>
           <Link to="/contact" className={navLinkClass("/contact")}>
             Contact
