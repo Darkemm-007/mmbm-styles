@@ -1,92 +1,40 @@
 import { useState, useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
 import Navigation from "@/components/Navigation";
-import ProductCard, { Product } from "@/components/ProductCard";
+import ProductCard from "@/components/ProductCard";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { products } from "@/data/products";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+const PAGE_SIZE = 6;
 
 const Catalog = () => {
   const { addToCart, cartCount } = useCart();
-  const [searchParams] = useSearchParams();
-  const categoryParam = searchParams.get("category");
-  const [selectedCategory, setSelectedCategory] = useState(categoryParam || "All");
+  const [page, setPage] = useState(1);
 
-  const categories = ["All", "Men", "Women"];
-
-  const filteredProducts = useMemo(() => {
-    if (selectedCategory === "All") return products;
-    return products.filter((product) => product.category === selectedCategory);
-  }, [selectedCategory]);
-
-  const newProducts = products.filter((p) => p.isNew);
-  const bestsellers = products.filter((p) => p.isBestseller);
+  const totalPages = Math.max(1, Math.ceil(products.length / PAGE_SIZE));
+  const paginated = useMemo(
+    () => products.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+    [page]
+  );
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation cartCount={cartCount} />
-      
+
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Collection</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Available Stocks</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Browse our carefully curated selection of fashion items. Reserve now and pay when you collect or receive delivery.
+            Browse our clothing currently in stock. Reserve now and pay when you collect or receive delivery.
           </p>
         </div>
 
-        {/* Category Tabs */}
-        <div className="mb-12">
-          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
-              {categories.map((category) => (
-                <TabsTrigger key={category} value={category}>
-                  {category}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
-        </div>
-
-        {/* New Arrivals Section */}
-        {selectedCategory === "All" && newProducts.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-6">New Arrivals</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {newProducts.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  onReserve={addToCart}
-                />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Bestsellers Section */}
-        {selectedCategory === "All" && bestsellers.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-6">Bestsellers</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {bestsellers.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  onReserve={addToCart}
-                />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* All Products Section */}
+        {/* Products Grid */}
         <section>
-          <h2 className="text-3xl font-bold mb-6">
-            {selectedCategory === "All" ? "All Products" : selectedCategory}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {filteredProducts.map((product) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {paginated.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
@@ -95,6 +43,42 @@ const Catalog = () => {
             ))}
           </div>
         </section>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-4 mt-12">
+            <Button
+              variant="outline"
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              disabled={page === 1}
+            >
+              <ChevronLeft className="h-4 w-4 mr-1" />
+              Previous
+            </Button>
+
+            <div className="flex items-center gap-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                <Button
+                  key={p}
+                  variant={p === page ? "default" : "outline"}
+                  size="icon"
+                  onClick={() => setPage(p)}
+                >
+                  {p}
+                </Button>
+              ))}
+            </div>
+
+            <Button
+              variant="outline"
+              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              disabled={page === totalPages}
+            >
+              Next
+              <ChevronRight className="h-4 w-4 ml-1" />
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
