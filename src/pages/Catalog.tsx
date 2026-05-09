@@ -12,7 +12,7 @@ const Catalog = () => {
   const categoryParam = searchParams.get("category");
   const [selectedCategory, setSelectedCategory] = useState(categoryParam || "All");
 
-  const categories = ["All", "Men", "Women", "Shoes", "Accessories"];
+  const categories = ["All", "Men", "Women"];
 
   const filteredProducts = useMemo(() => {
     if (selectedCategory === "All") return products;
@@ -38,7 +38,7 @@ const Catalog = () => {
         {/* Category Tabs */}
         <div className="mb-12">
           <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-5">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
               {categories.map((category) => (
                 <TabsTrigger key={category} value={category}>
                   {category}
