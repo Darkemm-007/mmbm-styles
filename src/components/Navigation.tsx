@@ -36,17 +36,8 @@ const Navigation = ({ cartCount = 0 }: NavigationProps) => {
             <Link to="/" className={navLinkClass("/")}>
               Home
             </Link>
-            <Link to="/catalog" className={navLinkClass("/catalog")}>
-              Shop
-            </Link>
-            <Link to="/clothing" className={navLinkClass("/clothing")}>
-              Clothing
-            </Link>
-            <Link to="/shoes" className={navLinkClass("/shoes")}>
-              Shoes
-            </Link>
-            <Link to="/accessories" className={navLinkClass("/accessories")}>
-              Accessories
+            <Link to="/catalog">
+              <Button variant="hero" size="sm">Let's Shop</Button>
             </Link>
             <Link to="/contact" className={navLinkClass("/contact")}>
               Contact
@@ -74,21 +65,12 @@ const Navigation = ({ cartCount = 0 }: NavigationProps) => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden flex items-center justify-around pb-4 border-t pt-2">
+        <div className="md:hidden flex items-center justify-around pb-4 border-t pt-2 gap-2">
           <Link to="/" className={navLinkClass("/")}>
             Home
           </Link>
-          <Link to="/catalog" className={navLinkClass("/catalog")}>
-            Shop
-          </Link>
-          <Link to="/clothing" className={navLinkClass("/clothing")}>
-            Clothing
-          </Link>
-          <Link to="/shoes" className={navLinkClass("/shoes")}>
-            Shoes
-          </Link>
-          <Link to="/accessories" className={navLinkClass("/accessories")}>
-            Accessories
+          <Link to="/catalog">
+            <Button variant="hero" size="sm">Let's Shop</Button>
           </Link>
           <Link to="/contact" className={navLinkClass("/contact")}>
             Contact
