@@ -1,7 +1,8 @@
 import { Product } from "@/components/ProductCard";
 import classicTshirt from "@/assets/mmbm-classic-tshirt.jpeg";
 import crazyCroppedTshirt from "@/assets/mmbm-crazy-cropped-tshirt.jpeg";
-
+import classicHoddie from "@/assets/C:\Users\Darkemm\OneDrive\Desktop\Awal\image6.jpeg";
+import stylishHoddie from "@/assets/C:\Users\Darkemm\OneDrive\Desktop\Awal\image7.jpeg";
 export const products: Product[] = [
   {
     id: "u1",
@@ -27,7 +28,7 @@ export const products: Product[] = [
     id: "u3",
     name: "MMBM Classic hoodie",
     price: 250.00,
-    image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80",
+    image: classicHoddie,
     category: "Unisex",
     sizes: ["2XL", "3XL", "4XL"],
     colors: ["Pink", "Black"],
@@ -36,7 +37,7 @@ export const products: Product[] = [
     id: "u4",
     name: "MMBM Stylish hoodie",
     price: 300.00,
-    image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80",
+    image: stylishHoddie,
     category: "Unisex",
     sizes: ["Free size"],
     colors: ["Red"],
