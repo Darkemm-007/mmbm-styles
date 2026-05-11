@@ -1,11 +1,13 @@
 import { Product } from "@/components/ProductCard";
+import classicTshirt from "@/assets/mmbm-classic-tshirt.jpeg";
+import crazyCroppedTshirt from "@/assets/mmbm-crazy-cropped-tshirt.jpeg";
 
 export const products: Product[] = [
   {
     id: "u1",
     name: "MMBM classic t-shirt",
     price: 200.00,
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
+    image: classicTshirt,
     category: "Unisex",
     sizes: ["M", "L", "XL", "2XL", "3XL"],
     colors: ["White", "Brown", "Black"],
@@ -15,7 +17,7 @@ export const products: Product[] = [
     id: "u2",
     name: "MMBM Crazy cropped t-shirt",
     price: 200.00,
-    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
+    image: crazyCroppedTshirt,
     category: "Unisex",
     sizes: ["Free size"],
     colors: ["Black"],
