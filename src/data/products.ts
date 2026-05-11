@@ -1,8 +1,8 @@
 import { Product } from "@/components/ProductCard";
 import classicTshirt from "@/assets/mmbm-classic-tshirt.jpeg";
 import crazyCroppedTshirt from "@/assets/mmbm-crazy-cropped-tshirt.jpeg";
-import classicHoddie from "@/assets/C:\Users\Darkemm\OneDrive\Desktop\Awal\image6.jpeg";
-import stylishHoddie from "@/assets/C:\Users\Darkemm\OneDrive\Desktop\Awal\image7.jpeg";
+import classicHoddie from "@/assets/mmbm-classic-hoodie.jpeg";
+import stylishHoddie from "@/assets/mmbm-stylish-hoodie.jpeg";
 export const products: Product[] = [
   {
     id: "u1",
