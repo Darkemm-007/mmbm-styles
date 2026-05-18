@@ -32,6 +32,7 @@ export const products: Product[] = [
     category: "Unisex",
     sizes: ["2XL", "3XL", "4XL"],
     colors: ["Pink", "Black"],
+    isNew: true,
   },
   {
     id: "u4",
@@ -41,5 +42,6 @@ export const products: Product[] = [
     category: "Unisex",
     sizes: ["Free size"],
     colors: ["Red"],
+    isNew: true,
   },
 ];
