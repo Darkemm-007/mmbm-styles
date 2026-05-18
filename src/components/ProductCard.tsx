@@ -45,11 +45,11 @@ const ProductCard = ({ product, onReserve }: ProductCardProps) => {
         onConfirm={onReserve}
       />
     <Card className="group overflow-hidden transition-smooth hover:shadow-lg">
-      <div className="relative overflow-hidden aspect-[3/4]">
+      <div className="relative overflow-hidden aspect-[3/4] bg-secondary">
         <img
           src={product.image}
           alt={product.name}
-          className="object-cover w-full h-full transition-smooth group-hover:scale-105"
+          className="object-contain w-full h-full transition-smooth group-hover:scale-105"
         />
         {/* Logo Watermark */}
         <img 
