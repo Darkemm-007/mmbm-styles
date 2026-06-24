@@ -7,6 +7,10 @@ import tracksuit from "@/assets/mmbm-tracksuit.jpeg";
 import trackTop from "@/assets/mmbm-track-top.jpeg";
 import trackDown from "@/assets/mmbm-track-down.jpeg";
 import moneyFame from "@/assets/mmbm-money-fame.jpeg";
+import birkBlack from "@/assets/birk-black.jpeg";
+import birkCream from "@/assets/birk-cream.jpeg";
+import birkGrey from "@/assets/birk-grey.jpeg";
+import birkArmy from "@/assets/birk-army.jpeg";
 export const products: Product[] = [
   {
     id: "u1",
@@ -92,7 +96,7 @@ export const products: Product[] = [
     id: "u9",
     name: "Birkenstock",
     price: 249.99,
-    image: "C:\\Users\\Darkemm\\OneDrive\\Desktop\\awal\\1003a730-8ba1-4581-9fa1-2f4880fcc758.JPG",
+    image: birkBlack,
     category: "Unisex",
     sizes: ["39", "40", "41", "42", "43", "44", "45", "46", "47"],
     colors: ["Black"],
@@ -102,7 +106,7 @@ export const products: Product[] = [
     id: "u10",
     name: "Birkenstock",
     price: 249.99,
-    image: "C:\\Users\\Darkemm\\OneDrive\\Desktop\\awal\\c7446fb4-333d-40bb-bae7-79844239a944.JPG",
+    image: birkCream,
     category: "Unisex",
     sizes: ["39", "40", "41", "42", "43", "44", "45", "46", "47"],
     colors: ["Cream"],
@@ -112,7 +116,7 @@ export const products: Product[] = [
     id: "u11",
     name: "Birkenstock",
     price: 249.99,
-    image: "C:\\Users\\Darkemm\\OneDrive\\Desktop\\awal\\41568b0c-7b49-44f3-b630-603a0b0e7fd2.JPG",
+    image: birkGrey,
     category: "Unisex",
     sizes: ["39", "40", "41", "42", "43", "44", "45", "46", "47"],
     colors: ["Grey"],
@@ -122,7 +126,7 @@ export const products: Product[] = [
     id: "u12",
     name: "Birkenstock",
     price: 249.99,
-    image: "C:\\Users\\Darkemm\\OneDrive\\Desktop\\awal\\3a87ad21-1410-4b90-a3fa-fee5773b0162.JPG",
+    image: birkArmy,
     category: "Unisex",
     sizes: ["39", "40", "41", "42", "43", "44", "45", "46", "47"],
     colors: ["Army"],
