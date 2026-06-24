@@ -7,6 +7,10 @@ import tracksuit from "@/assets/mmbm-tracksuit.jpeg";
 import trackTop from "@/assets/mmbm-track-top.jpeg";
 import trackDown from "@/assets/mmbm-track-down.jpeg";
 import moneyFame from "@/assets/mmbm-money-fame.jpeg";
+import birkBlack from "@/assets/birk-black.jpeg";
+import birkCream from "@/assets/birk-cream.jpeg";
+import birkGrey from "@/assets/birk-grey.jpeg";
+import birkArmy from "@/assets/birk-army.jpeg";
 export const products: Product[] = [
   {
     id: "u1",
