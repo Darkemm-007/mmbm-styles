@@ -3,6 +3,10 @@ import classicTshirt from "@/assets/mmbm-classic-tshirt.jpeg";
 import crazyCroppedTshirt from "@/assets/mmbm-crazy-cropped-tshirt.jpeg";
 import classicHoddie from "@/assets/mmbm-classic-hoodie.jpeg";
 import stylishHoddie from "@/assets/mmbm-stylish-hoodie.jpeg";
+import tracksuit from "@/assets/mmbm-tracksuit.jpeg";
+import trackTop from "@/assets/mmbm-track-top.jpeg";
+import trackDown from "@/assets/mmbm-track-down.jpeg";
+import moneyFame from "@/assets/mmbm-money-fame.jpeg";
 export const products: Product[] = [
   {
     id: "u1",
