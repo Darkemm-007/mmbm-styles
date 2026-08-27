@@ -134,7 +134,7 @@ export const products: Product[] = [
   },
   {
     id: "u13",
-    name: "Jort",
+    name: "MMBM Yaa Happen Jort",
     price: 350.00,
     image: jort,
     category: "Unisex",
