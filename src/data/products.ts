@@ -11,6 +11,7 @@ import birkBlack from "@/assets/birk-black.jpeg";
 import birkCream from "@/assets/birk-cream.jpeg";
 import birkGrey from "@/assets/birk-grey.jpeg";
 import birkArmy from "@/assets/birk-army.jpeg";
+import jort from "@/assets/jort.jpg.asset.json";
 export const products: Product[] = [
   {
     id: "u1",
