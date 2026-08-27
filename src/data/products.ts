@@ -137,7 +137,7 @@ export const products: Product[] = [
     id: "u13",
     name: "Jort",
     price: 350.00,
-    image: jort,
+    image: jort.url,
     category: "Unisex",
     sizes: ["Free size"],
     colors: ["Army"],
