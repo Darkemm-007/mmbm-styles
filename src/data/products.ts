@@ -132,4 +132,14 @@ export const products: Product[] = [
     colors: ["Army"],
     isNew: true,
   },
+   {
+    id: "u13",
+    name: "Jort",
+    price: 350.00,
+    image: jort,
+    category: "Unisex",
+    sizes: ["Free size"],
+    colors: ["Army"],
+    isNew: true,
+  },
 ];
