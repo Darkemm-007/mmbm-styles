@@ -143,4 +143,14 @@ export const products: Product[] = [
     colors: ["Army"],
     isNew: true,
   },
+  {
+    id: "u14",
+    name: "MONEY MUST BE MADE Shirt",
+    price: 300.00,
+    image: jort.url,
+    category: "Unisex",
+    sizes: ["M", "L", "XL"],
+    colors: ["Black", "White"],
+    isNew: true,
+  },
 ];
