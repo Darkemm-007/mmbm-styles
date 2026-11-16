@@ -12,6 +12,7 @@ import birkCream from "@/assets/birk-cream.jpeg";
 import birkGrey from "@/assets/birk-grey.jpeg";
 import birkArmy from "@/assets/birk-army.jpeg";
 import jort from "@/assets/jort.jpg.asset.json";
+import moneyMustBeMadeShirt from "@/assets/mmbm-money-must-be-made-shirt.jpg.asset.json";
 export const products: Product[] = [
   {
     id: "u1",
@@ -147,7 +148,7 @@ export const products: Product[] = [
     id: "u14",
     name: "MONEY MUST BE MADE Shirt",
     price: 300.00,
-    image: jort.url,
+    image: moneyMustBeMadeShirt.url,
     category: "Unisex",
     sizes: ["M", "L", "XL"],
     colors: ["Black", "White"],
